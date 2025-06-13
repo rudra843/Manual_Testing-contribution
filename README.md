@@ -66,3 +66,37 @@ Try out [NodeMaven](https://go.nodemaven.com/automation_proxy) now(_Use F86 at c
 * Contact me for 1:1 trainings related to Test Automation/Software Testing
 
 ### :bookmark: Checkout videos related to Software Testing and Test automation tools on [Testing Talks with Faisal Khatri](https://www.youtube.com/@faisalkhatriqa)
+
+## :Added sample test cases for Passwordless functionality #13
+TestCase ID  	    Test Scenario 	           Test Steps	                          Expected Result	                         Status 
+     
+PASSF001     	    Login via valid email	     1. Navigate to login screen          Success message shown:                   Pass/Fail
+                                             2. Enter valid email                 “Check your email for the login link” 
+                                             3.Click "Send Link"
+
+PASSF002          Login via invalid email    Enter a malformed email              Validation error shown:                  Pass/Fail
+                                             (e.g. user@.com) and submit          “Invalid email format”                  
+
+PASSF003          Leave email field empty	   Click “Send Link” with no            Error shown: “Email is required”	       Pass/Fail
+                                             email entered
+
+PASSF004          OTP link expires after     Submit email, wait for timeout       Error page: “Link expired                Pass/Fail
+                  timeout                    (e.g. 10 min), then click link       Please request a new login link.” 
+
+PASSF005          OTP link reused            Click link again after               Error shown:                             Pass/Fail
+                  after successful login     first successful login               “Link already used or expired”
+
+PASSF006          OTP link opened in         Submit link in browser A,            Link invalid or login proceeds           Pass/Fail
+                  different browser/device   try opening in browser B             depending on security policy
+
+PASSF007          Login fails for            Enter email not linked	              Error shown: “Email not registered”	     Pass/Fail
+                  unregistered email         with account         
+
+PASS008           Rate limit exceeded        Try sending OTP/link repeatedly      Error: “Too many requests,               Pass/Fail
+	                for OTP requests           in short span                        try again later”
+
+PASS009           Accessibility check 	     Use screen reader or keyboard 	      All elements accessible,                 Pass/Fail
+                  for login screen           navigation on login screen           proper labels and focus order	
+
+PASS0010          Login link/OTP leads to    Complete login via link, 	          User lands on their dashboard/homepage	 Pass/Fail
+                  correct user dashboard     verify logged in as correct user
